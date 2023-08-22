@@ -1,0 +1,112 @@
+@use "../utils/variables";
+@use "../utils/mixins";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// grid function
+@function grid($col, $offSet: false) {
+  $width: calc($col / variables.$cols) * 100 + "%";
+  $result: calc(#{$width} - #{variables.$gutter});
+
+  @if $offSet == offSet {
+    $gutter: #{variables.$gutter}/2;
+    $result: calc(#{$width} + #{variables.$gutter});
+  }
+
+  @return $result;
+}
+
+// generate class to grid
+@for $grid from 1 through variables.$cols {
+  .grid-#{$grid} {
+    width: grid($grid);
+  }
+}
+
+// mixin mount structur layout frid
+@mixin grid-structure {
+  float: left;
+  min-height: 1px;
+  margin-left: #{variables.$gutter}/2;
+  margin-right: #{variables.$gutter}/2;
+
+  @include mixins.device("s") {
+    width: 100%;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// get all elements to have attribute class and begins with 'grid-'
+[class^="grid-"] {
+  @include grid-structure;
+}
+// generate class to offset
+@for $grid from 1 through variables.$cols {
+  .offset-#{$grid} {
+    margin-left: grid($grid, offSet);
+    @extend %offset;
+  }
+}
+
+@include mixins.device("s") {
+  %offset {
+    margin-left: 0;
+  }
+}
+
+@mixin clearFix {
+  &::after,
+  &::before {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin container {
+  max-width: variables.$l-device;
+  margin: 0 auto;
+  position: relative;
+
+  @include mixins.device(",") {
+    max-width: variables.$m-device;
+  }
+
+  @include mixins.device("s") {
+    max-width: variables.$s-device;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @include clearFix;
+}
+
+@mixin row {
+  position: relative;
+  margin-left: -#{variables.$gutter}/ 2;
+  margin-right: -#{variables.$gutter}/ 2;
+
+  @include mixins.device("s") {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @include clearFix;
+}
+
+.container {
+  @include container;
+}
+
+.row {
+  @include row;
+}

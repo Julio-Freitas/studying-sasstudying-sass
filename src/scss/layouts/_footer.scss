@@ -1,0 +1,23 @@
+@use "../utils/variables";
+@use "../utils/mixins";
+
+footer {
+  padding: 20px 0;
+  background: variables.$gray;
+
+  @include mixins.box-shadow(0 0 0 10px variables.$gray);
+  p {
+    color: variables.$medium-beige;
+    @include mixins.device(s) {
+      text-align: center;
+        font-family: variables.$font-1
+    }
+  }
+  a img {
+    float: right;
+    @include mixins.device(s) {
+      float: none;
+      margin: 20px auto;
+    }
+  }
+}

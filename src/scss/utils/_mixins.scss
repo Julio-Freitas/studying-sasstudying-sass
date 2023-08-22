@@ -1,0 +1,50 @@
+
+@use "variables";
+@use "functions";
+
+@mixin type-1($size) {
+	font-family: variables.$font-1;
+	@if $size == 18 {
+		font-size: functions.em(18);
+		line-height: functions.em(30, 18);
+	}
+}
+
+@mixin type-2($size) {
+	font-family: variables.$font-2;
+	@if $size == 18 {
+		font-size: functions.em(18);
+		line-height: functions.em(30, 18);
+	}
+	@else if $size == 24 {
+		font-size: functions.em(24);
+		line-height: functions.em(30, 24);
+	}
+}
+
+@mixin device($size) {
+  @if $size == l {
+    // biggest 1200px
+    @media screen and (min-width: #{variables.$l-device}) {
+      @content;
+    }
+  } @else if $size == m {
+    // between 760px and 1199px
+    @media screen and (min-width: #{variables.$m-device}) and (max-width: #{variables.$l-device - 1}) {
+      @content;
+    }
+  } @else if $size == s {
+    // more less 759px
+    @media screen and (max-width: #{variables.$m-device - 1}) {
+      @content;
+    }
+  }
+}
+
+
+@mixin box-shadow($shadow...) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+

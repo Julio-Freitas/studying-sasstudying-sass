@@ -1,0 +1,8 @@
+{
+  "port": 8000,
+  "files": ["./src/**/*.{html,htm,css,js,scss}"],
+  "server": { "baseDir": "./src" },
+  "ghostMode": {
+    "css": true
+  }
+}

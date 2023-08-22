@@ -1,0 +1,16 @@
+{
+  "name": "sass_course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "julio.freitas",
+  "license": "MIT",
+  "scripts": {
+    "sass:min": "sass src/scss/style.scss:src/css/style.min.css --style compressed",
+    "sass": "yarn sass:min & sass src/scss/style.scss:src/css/style.css --watch",
+    "dev": "lite-server -c ./lite-server-config.json"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "sass": "^1.64.2"
+  }
+}

@@ -1,0 +1,84 @@
+@use "../utils/variables";
+@use "../utils/mixins";
+
+.intro {
+  margin-top: 60px;
+
+  @include mixins.device(m) {
+    margin-top: 20px;
+  }
+
+  @include mixins.device(s) {
+    margin: 0 auto;
+  }
+
+  &-info {
+    max-width: 320px;
+    border-right: 2px solid variables.$gray;
+
+    @include mixins.device(s) {
+      margin: 60px auto 60px;
+    }
+
+    p {
+      padding-top: 10px;
+    }
+
+    p:first-child {
+      border-bottom: 2px solid variables.$gray;
+      padding-bottom: 10px;
+    }
+  }
+
+  &-tel {
+    color: variables.$dark-beige;
+
+    @include mixins.device(s) {
+      margin-bottom: 40px;
+    }
+    &::after {
+      content: "/ / / /";
+      display: block;
+      margin-top: 60px;
+      font-size: 200px;
+      letter-spacing: -30px;
+      color: variables.$gray;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include mixins.device(m) {
+      &::after {
+        content: "/ / /";
+        text-align: center;
+      }
+    }
+
+    @include mixins.device(s) {
+      display: none;
+    }
+  }
+
+  &-photo {
+    border: 10px solid variables.$gray;
+    width: 100%;
+  }
+}
+
+.logo {
+  margin-bottom: 60px;
+
+  @include mixins.device(s) {
+    margin: 0 auto;
+  }
+}
+
+.open {
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: variables.$green;
+  align-items: center;
+  justify-content: flex-end;
+}

@@ -1,0 +1,45 @@
+@use "../utils/variables";
+@use "../utils/mixins";
+
+body {
+  background: variables.$medium-beige;
+  border: 10px solid variables.$medium-beige;
+  color: variables.$gray;
+}
+
+div {
+  font-family: "Aref Ruqaa", serif;
+  font-family: "PT Mono", monospace;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  @include mixins.type-2(18);
+}
+
+.titulo {
+  @include mixins.type-1(18);
+  text-transform: uppercase;
+
+  @include mixins.device(s) {
+    margin-bottom: 40px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 75%;
+    float: right;
+    height: 2px;
+    background: variables.$gray;
+    margin-top: 14px;
+
+    @include mixins.device(m) {
+      width: 60%;
+    }
+  }
+}

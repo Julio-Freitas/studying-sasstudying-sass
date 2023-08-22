@@ -1,0 +1,86 @@
+@use "../utils/variables";
+@use "../utils/mixins";
+
+.contact {
+  margin-top: 120px;
+  margin-bottom: 120px;
+  h1 {
+    @include mixins.type-2(24);
+  }
+  @include mixins.device(s) {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+
+.contact form {
+  label {
+    @include mixins.type-1(18);
+    display: block;
+  }
+  input[type="text"],
+  textarea {
+    @include mixins.type-1(18);
+    color: variables.$gray;
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    border: 2px solid variables.$dark-beige;
+    background: transparent;
+    margin-bottom: 1em;
+    transition: ease-in-out .5s;
+    &:hover,
+    &:focus {
+      outline: none;
+      border-color: variables.$gray;
+    }
+  }
+  textarea {
+    height: 120px;
+  }
+}
+
+input.button {
+  @include mixins.type-1(18);
+  cursor: pointer;
+  color: variables.$dark-beige;
+  text-transform: uppercase;
+  border: 2px solid variables.$dark-beige;
+  background: transparent;
+  display: block;
+  width: 200px;
+  padding-top: 5px;
+  @include mixins.box-shadow(
+    5px 5px 0 -2px variables.$dark-beige,
+    5px 5px 0 0 variables.$dark-beige
+  );
+  transition: 0.3s;
+
+  &:hover {
+    @include mixins.box-shadow(
+      3px 3px 0 -2px variables.$medium-beige,
+      3px 3px 0 0 variables.$medium-beige
+    );
+  }
+}
+
+.contato-info {
+  display: inline-block;
+  color: variables.$dark-beige;
+  margin-top: 2em;
+  margin-bottom: 3em;
+  @include mixins.device(l) {
+    float: right;
+    text-align: right;
+    margin-top: -3em;
+  }
+}
+
+.contato-mapa {
+  display: block;
+  @include mixins.box-shadow(0 0 0 10px variables.$dark-beige);
+  clear: both;
+  img {
+    width: 100%;
+  }
+}
