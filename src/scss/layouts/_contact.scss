@@ -1,13 +1,13 @@
-@use "../utils/variables";
-@use "../utils/mixins";
+
+@use '../utils/bootstrap';
 
 .contact {
   margin-top: 120px;
   margin-bottom: 120px;
   h1 {
-    @include mixins.type-2(24);
+    @include bootstrap.type-2(24);
   }
-  @include mixins.device(s) {
+  @include bootstrap.device(s) {
     margin-top: 60px;
     margin-bottom: 60px;
   }
@@ -15,24 +15,24 @@
 
 .contact form {
   label {
-    @include mixins.type-1(18);
+    @include bootstrap.type-1(18);
     display: block;
   }
   input[type="text"],
   textarea {
-    @include mixins.type-1(18);
-    color: variables.$gray;
+    @include bootstrap.type-1(18);
+    color: bootstrap.$gray;
     width: 100%;
     padding: 0 5px;
     height: 40px;
-    border: 2px solid variables.$dark-beige;
+    border: 2px solid bootstrap.$dark-beige;
     background: transparent;
     margin-bottom: 1em;
     transition: ease-in-out .5s;
     &:hover,
     &:focus {
       outline: none;
-      border-color: variables.$gray;
+      border-color: bootstrap.$gray;
     }
   }
   textarea {
@@ -41,35 +41,35 @@
 }
 
 input.button {
-  @include mixins.type-1(18);
+  @include bootstrap.type-1(18);
   cursor: pointer;
-  color: variables.$dark-beige;
+  color: bootstrap.$dark-beige;
   text-transform: uppercase;
-  border: 2px solid variables.$dark-beige;
+  border: 2px solid bootstrap.$dark-beige;
   background: transparent;
   display: block;
   width: 200px;
   padding-top: 5px;
-  @include mixins.box-shadow(
-    5px 5px 0 -2px variables.$dark-beige,
-    5px 5px 0 0 variables.$dark-beige
+  @include bootstrap.box-shadow(
+    5px 5px 0 -2px bootstrap.$dark-beige,
+    5px 5px 0 0 bootstrap.$dark-beige
   );
   transition: 0.3s;
 
   &:hover {
-    @include mixins.box-shadow(
-      3px 3px 0 -2px variables.$medium-beige,
-      3px 3px 0 0 variables.$medium-beige
+    @include bootstrap.box-shadow(
+      3px 3px 0 -2px bootstrap.$medium-beige,
+      3px 3px 0 0 bootstrap.$medium-beige
     );
   }
 }
 
 .contato-info {
   display: inline-block;
-  color: variables.$dark-beige;
+  color: bootstrap.$dark-beige;
   margin-top: 2em;
   margin-bottom: 3em;
-  @include mixins.device(l) {
+  @include bootstrap.device(l) {
     float: right;
     text-align: right;
     margin-top: -3em;
@@ -78,7 +78,7 @@ input.button {
 
 .contato-mapa {
   display: block;
-  @include mixins.box-shadow(0 0 0 10px variables.$dark-beige);
+  @include bootstrap.box-shadow(0 0 0 10px bootstrap.$dark-beige);
   clear: both;
   img {
     width: 100%;
